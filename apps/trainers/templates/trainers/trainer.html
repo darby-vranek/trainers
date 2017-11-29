@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{{ trainer_class.title }}</title>
+		<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+		<style>
+			* {
+				font-family: 'Barlow Semi Condensed', 'sans-serif';
+				text-align: center;
+			}
+			body {
+				background-color: hsl(0, 60%, 50%);
+			}
+			.wrapper {
+				width: 1000px;
+				height: 700px;
+				background-color: white;
+				margin: auto;
+			}
+			.trainers {
+				margin-top: -10px;
+				height: 650px;
+				width: 600px;
+				overflow: scroll;
+				display: inline-block;
+			}
+			table {
+				margin: auto;
+			}
+			td {
+				padding: 5px 10px;
+			}
+			h1 {
+				font-size: 18px;
+			}
+			a {
+				text-decoration: none;
+			}
+			a:hover {
+				color: lightblue;
+				transition: color 0.5s;
+			}
+			.big {
+				vertical-align:baseline;
+				display: inline-block;
+				margin-right: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<p><a  style="color: white" href="/">Go Back</a></p>
+			<img class='big' src="{{ trainer_class.overworld_sprite }}" alt="{{ trainer_class.title }}">
+			<div class="trainers">
+				{% for trainer in trainer_class.trainers.all %}
+				<h1>{{ trainer_class.title }} {{ trainer.name }}</h1>
+				<table>
+					{% for pokemon in trainer.pokemon.all %}
+					<td>
+						<img src="{{ pokemon.battle_sprite }}" alt="{{ pokemon.name }}">
+						<p><a href="pokemondb.net/pokedex/{{ pokemon.name.lower }}">{{ pokemon.name }}</a></p>
+						<p>{{ pokemon.type_i}}
+						{% if pokemon.type_ii %}
+						/{{pokemon.type_ii}}
+						{% endif %}</p>
+					</td>
+					{% endfor %}
+				</table>
+				<hr>
+				{% endfor %}
+			</div>
+
+		</div>
+	</body>
+</html>

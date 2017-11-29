@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Doubles</title>
+	</head>
+	<body>
+		<table>
+			{% for double in doubles %}
+			<tr>
+				<td>
+					<img src="{{ double.battle_sprite }}" alt="{{ double.title }} battle sprite">
+				</td>
+				<td>
+					{{ double.title }}
+				</td>
+				{% for trainer in double.trainers.all %}
+				<td>
+					{{ trainer.title }}
+				</td>
+				<td>
+					<img src="{{ trainer.battle_sprite }}" alt="{{ trainer.title }} battle sprite">
+				</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>
