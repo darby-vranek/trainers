@@ -4,6 +4,8 @@
 		<meta charset="utf-8">
 		<title>{{ trainer_class.title }}</title>
 		<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
+
 		<style>
 			* {
 				font-family: 'Barlow Semi Condensed', 'sans-serif';
@@ -14,13 +16,13 @@
 			}
 			.wrapper {
 				width: 1000px;
-				height: 700px;
+				height: 650px;
 				background-color: white;
-				margin: auto;
+				margin: -10px auto;
 			}
 			.trainers {
-				margin-top: -10px;
-				height: 650px;
+				margin-top: -20px;
+				height: 590px;
 				width: 600px;
 				overflow: scroll;
 				display: inline-block;
@@ -30,12 +32,23 @@
 			}
 			td {
 				padding: 5px 10px;
+				vertical-align: bottom;
 			}
 			h1 {
+				height: 50px;
+				padding-top: 10px;
+				font-size: 30px;
+				background-color: gray;
+				font-family: 'Barlow Condensed', sans-serif;
+				color: white;
+			}
+			h2 {
 				font-size: 18px;
 			}
 			a {
 				text-decoration: none;
+				transition: color 0.5s;
+				color: hsl(0, 60%, 50%);
 			}
 			a:hover {
 				color: lightblue;
@@ -45,21 +58,29 @@
 				vertical-align:baseline;
 				display: inline-block;
 				margin-right: 20px;
+				margin-bottom: 10px;
+			}
+			#back {
+				background: white;
+				width: 30px;
+				padding: 10px 17px 10px 15px;
+				margin-left: 5px;
 			}
 		</style>
 	</head>
 	<body>
+		<p id="back"><a href="/">Back</a></p>
 		<div class="wrapper">
-			<p><a  style="color: white" href="/">Go Back</a></p>
+			<h1>{{ trainer_class.title }}</h1>
 			<img class='big' src="{{ trainer_class.overworld_sprite }}" alt="{{ trainer_class.title }}">
 			<div class="trainers">
 				{% for trainer in trainer_class.trainers.all %}
-				<h1>{{ trainer_class.title }} {{ trainer.name }}</h1>
+				<h2>{{ trainer_class.title }} {{ trainer.name }}</h2>
 				<table>
 					{% for pokemon in trainer.pokemon.all %}
 					<td>
 						<img src="{{ pokemon.battle_sprite }}" alt="{{ pokemon.name }}">
-						<p><a href="pokemondb.net/pokedex/{{ pokemon.name.lower }}">{{ pokemon.name }}</a></p>
+						<p><a href="https://pokemondb.net/pokedex/{{ pokemon.name.lower }}">{{ pokemon.name }}</a></p>
 						<p>{{ pokemon.type_i}}
 						{% if pokemon.type_ii %}
 						/{{pokemon.type_ii}}
