@@ -25,7 +25,7 @@ SECRET_KEY = 'dbdys#=%_1l$xg1$h&@cxwk53(i(9m4shaq-w(!3w#_v*svfn6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
